@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHomeSlidesTable extends Migration
+class CreateHomeSliderTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateHomeSlidesTable extends Migration
      */
     public function up()
     {
-        Schema::create('home_slides', function (Blueprint $table) {
+        Schema::create('home_slider', function (Blueprint $table) {
             $table->id();
             $table->string('title');
             $table->string('short_title')->nullable();

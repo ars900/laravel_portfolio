@@ -4,11 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Requests\HomeSliderRequest;
-use App\Models\HomeSlider;
+use App\Http\Requests\HomeSlidesRequest;
+use App\Models\HomeSlides;
 use Image;
 
-class HomeSliderController extends Controller
+class HomeSlidesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +17,9 @@ class HomeSliderController extends Controller
      */
     public function index( )
     {
-        $homeSlider = HomeSlider::first();
+        $homeSlides = HomeSlides::first();
 
-        return view('admin.home_slide.home_slide_all',compact('homeSlider'));
+        return view('admin.home_slide.home_slide_all',compact('homeSlides'));
     }
 
     /**
@@ -72,22 +72,22 @@ class HomeSliderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(HomeSliderRequest $request, HomeSlider $homeSlider)
+    public function update(HomeSlidesRequest $request, HomeSlides $homeSlides)
     {
-        $homeSlider->title = $request->title;
-        $homeSlider->short_title = $request->short_title;
-        $homeSlider->video_url = $request->video_url;
+        $homeSlides->title = $request->title;
+        $homeSlides->short_title = $request->short_title;
+        $homeSlides->video_url = $request->video_url;
         if($request->file('home_slide')){
             $image = $request->file('home_slide');
             $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
             Image::make($image)->resize(636,852)->save('upload/home_slide/'.$name_gen);
             $save_url = 'upload/home_slide/'.$name_gen;
 
-            $homeSlider->home_slide = $save_url;
+            $homeSlides->home_slide = $save_url;
 
 
         }
-        $homeSlider->save();
+        $homeSlides->save();
         $notification = [
             'message' => 'Slider Updated with image Successfully',
             'alert-type' => 'success'
