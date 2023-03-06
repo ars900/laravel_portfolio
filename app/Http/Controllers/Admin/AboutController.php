@@ -76,16 +76,16 @@ class AboutController extends Controller
     {
         $about->title = $request->title;
         $about->short_title = $request->short_title;
-        $about->short_description = $request->short_description;
-        if($request->file('about_image')){
+        $about->description = $request->description;
+        if($request->file('image')){
 
-            $image = $request->file('about_image');
+            $image = $request->file('image');
             $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
 
             Image::make($image)->resize(523,605)->save('upload/home_about/'.$name_gen);
             $save_url = 'upload/home_about/'.$name_gen;
 
-            $about->about_image = $save_url;
+            $about->image = $save_url;
         }
         $notification = [
             'message' => 'About page Updated with image Successfully',

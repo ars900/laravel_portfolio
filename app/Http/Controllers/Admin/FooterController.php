@@ -84,9 +84,10 @@ class FooterController extends Controller
             'message' => 'Footer Updated Successfully',
             'alert-type' => 'success'
         ];
+
         $footer->save();
 
-
+        $footer = Footer::first();
         return view('admin.footer.footer_all', compact('footer', 'notification'));
     }
 

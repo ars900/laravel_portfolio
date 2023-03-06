@@ -16,7 +16,7 @@
                                     <select name="blog_category_id" class="form-select" aria-label="Default select example">
                                         <option selected="">Open this select menu</option>
                                         @foreach($categories as $cat)
-                                            <option value="{{$cat->id}}" {{ old('blog_category_id') && old('blog_category_id') === $cat->id ? 'selected' : (isset($blog) && $blog->blog_category_id === $cat->id ? 'selected' : '') }}> {{$cat->blog_category}} </option>
+                                            <option value="{{$cat->id}}" {{ old('blog_category_id') && old('blog_category_id') === $cat->id ? 'selected' : (isset($blog) && $blog->blog_category_id === $cat->id ? 'selected' : '') }}> {{$cat->title}} </option>
                                         @endforeach
                                     </select>
                                </div>

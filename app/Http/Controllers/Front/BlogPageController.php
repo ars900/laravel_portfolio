@@ -19,7 +19,7 @@ class BlogPageController extends Controller
     {
         $blogs = Blog::all();
         $categories = BlogCategory::orderBy('blog_category','ASC')->get();
-        $footerData = Footer::find(1);
+        $footerData = Footer::first();
         return view('frontend.home_all.blog',compact('blogs','categories','footerData'));
     }
 

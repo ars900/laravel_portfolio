@@ -17,7 +17,7 @@ class PortfolioPageController extends Controller
     public function index()
     {
         $portfolio = Portfolio::all();
-        $footerData = Footer::find(1);
+        $footerData = Footer::first();
         return view('frontend.home_all.portfolio',compact('portfolio','footerData'));
     }
 

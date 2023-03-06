@@ -15,7 +15,7 @@ class ContactPageController extends Controller
      */
     public function index()
     {
-        $footerData = Footer::find(1);
+        $footerData = Footer::first();
         return view('frontend.home_all.contact',compact('footerData'));
     }
 

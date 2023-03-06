@@ -56,6 +56,13 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('contact', ContactController::class)->except(['show', 'update', 'edit']);
     });
 
+    Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
+        ->name('logout');
+
+    Route::get('/admin/admin_home', function () {
+        return view('admin.index');
+    })->name('admin');
+
 });
 
 
@@ -66,18 +73,6 @@ Route::resource('portfolio_page', PortfolioPageController::class)->only('index')
 Route::resource('blog_page', BlogPageController::class)->only('index');
 
 Route::resource('contact_page', ContactPageController::class)->only('index');
-
-
-
-
-
-Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
-    ->middleware('auth')
-    ->name('logout');
-
-Route::get('/admin/admin_home', function () {
-    return view('admin.index');
-})->middleware(['auth'])->name('admin'); /// past to
 
 
 

@@ -17,7 +17,7 @@ class AboutPageController extends Controller
     public function index()
     {
         $aboutPage = About::first();
-        $footerData = Footer::find(1);
+        $footerData = Footer::first();
         return view('frontend.home_all.about_page',compact('aboutPage','footerData'));
     }
 

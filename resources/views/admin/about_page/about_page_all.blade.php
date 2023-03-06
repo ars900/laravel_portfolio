@@ -26,19 +26,19 @@
                                   <div class="row mb-3">
                                     <label for="example-text-input" class="col-sm-2 col-form-label">@lang('general.short_description')</label>
                                     <div class="col-sm-10">
-                                        <textarea required="" name="short_description"  class="form-control" rows="5">{{ $aboutPage->short_description }} </textarea>
+                                        <textarea required="" name="description"  class="form-control" rows="5">{{ $aboutPage->description }} </textarea>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <label for="example-text-input" class="col-sm-2 col-form-label">@lang('general.about_image')</label>
                                     <div class="col-sm-10">
-                                        <input name="about_image" class="form-control" type="file" id="image">
+                                        <input name="image" class="form-control" type="file" id="image">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <label for="example-text-input" class="col-sm-2 col-form-label">  </label>
                                     <div class="col-sm-10">
-                                      <img id="showImage" class="rounded avatar-lg" src="{{ (!empty($aboutPage->about_image))? url( $aboutPage->about_image):url('upload/no_image.jpg') }}" alt="Card image cap">
+                                      <img id="showImage" class="rounded avatar-lg" src="{{ (!empty($aboutPage->image))? url( $aboutPage->image):url('upload/no_image.jpg') }}" alt="Card image cap">
                                     </div>
                                 </div>
                                 <input type="submit" class="btn btn-info waves-effect waves-light" value="Update">

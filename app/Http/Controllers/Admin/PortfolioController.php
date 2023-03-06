@@ -45,13 +45,15 @@ class PortfolioController extends Controller
         $portfolio->name = $request->name;
         $portfolio->title = $request->title;
 
-        $image = $request->file('image');
-        $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+        if ($request->file('image')) {
+            $image = $request->file('image');
+            $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
 
-        Image::make($image)->resize(1020,519)->save('upload/portfolio/'.$name_gen);
-        $save_url = 'upload/portfolio/'.$name_gen;
+            Image::make($image)->resize(1020,519)->save('upload/portfolio/'.$name_gen);
+            $save_url = 'upload/portfolio/'.$name_gen;
 
-        $portfolio->image =  $save_url;
+            $portfolio->image =  $save_url;
+        }
 
         $portfolio->save();
 
@@ -61,7 +63,8 @@ class PortfolioController extends Controller
         ];
 
         $portfolio = Portfolio::latest()->get();
-        return view('admin.portfolio.portfolio_all',compact('notification', 'portfolio'));
+
+        return redirect()->route('portfolio.index',[$notification,$portfolio]);
     }
 
     /**

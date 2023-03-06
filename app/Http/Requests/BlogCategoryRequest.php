@@ -24,7 +24,7 @@ class BlogCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'blog_category' => 'required',
+            'title' => 'required',
         ];
     }
 }

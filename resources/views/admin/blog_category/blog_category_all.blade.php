@@ -25,7 +25,7 @@
                                 @foreach($blogCategories as $item)
                             <tr>
                                 <td> {{ $item->id}} </td>
-                                <td> {{ $item->blog_category }} </td>
+                                <td> {{ $item->title }} </td>
                                 <td>
                                     <form action="{{ route('blog_category.destroy', $item->id) }}" method="post" class=" mt-2">
                                         <button class="btn btn-danger sm" type="submit" title="Delete Data"> <i class="fas fa-trash-alt"></i> </button>

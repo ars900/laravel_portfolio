@@ -63,10 +63,10 @@ class AdminController extends Controller
         }
         $user->save();
 
-        $notification = array(
+        $notification = [
             'message' => 'Admin Profile Updated Successfully',
             'alert-type' => 'success'
-        );
+        ];
 
         return redirect()->route('admin.profile')->with($notification);
     }
@@ -112,12 +112,12 @@ class AdminController extends Controller
             $users->password = bcrypt($request->newpassword);
             $users->save();
 
-            session()->flash('message','Password Updated Successfully');
-            return redirect()->back();
+            $message = 'Password Updated Successfully';
         } else{
-            session()->flash('message','Old password is not match');
-            return redirect()->back();
+            $message = 'Old password is not match';
         }
+        session()->flash($message);
+        return redirect()->back();
     }
 
     /**
@@ -134,10 +134,10 @@ class AdminController extends Controller
 
         $request->session()->regenerateToken();
 
-        $notification = array(
+        $notification = [
             'message' => 'User logged out successfully',
             'alert-type' => 'success'
-        );
+        ];
 
         return redirect('/login')->with($notification);
     }

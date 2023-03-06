@@ -31,7 +31,7 @@
                                   <div class="row mb-3">
                                        <label for="example-text-input" class="col-sm-2 col-form-label">@lang('general.slider_image')</label>
                                        <div class="col-sm-10">
-                                           <input name="home_slide" class="form-control" type="file"  id="image">
+                                           <input name="slide_image" class="form-control" type="file"  id="image">
                                       </div>
                                   </div>
                                   <div class="row mb-3">

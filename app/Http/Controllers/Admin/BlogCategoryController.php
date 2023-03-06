@@ -41,7 +41,7 @@ class BlogCategoryController extends Controller
     {
 
         $blogCategories = new BlogCategory();
-        $blogCategories->blog_category = $request->blog_category;
+        $blogCategories->title = $request->title;
 
         $blogCategories->save();
 

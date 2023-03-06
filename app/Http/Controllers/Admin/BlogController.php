@@ -32,7 +32,7 @@ class BlogController extends Controller
      */
     public function create()
     {
-        $categories = BlogCategory::orderBy('blog_category','ASC')->get();
+        $categories = BlogCategory::orderBy('title','ASC')->get();
         return view('admin.blogs.blogs_add', compact('categories'));
     }
 
@@ -49,17 +49,17 @@ class BlogController extends Controller
         $blog->tags = $request->tags;
         $blog->description = $request->description;
 
-        $image = $request->file('image');
-        $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();  // 3434343443.jpg
+        if ($request->file('image')) {
+            $image = $request->file('image');
+            $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
 
-        Image::make($image)->resize(430,327)->save('upload/blog/'.$name_gen);
-        $save_url = 'upload/blog/'.$name_gen;
+            Image::make($image)->resize(430,327)->save('upload/blog/'.$name_gen);
+            $save_url = 'upload/blog/'.$name_gen;
 
-        $blog->image = $save_url;
+            $blog->image = $save_url;
+        }
 
         $blog->save();
-
-
 
         $notification = [
             'message' => 'Blog Inserted Successfully',
@@ -88,7 +88,7 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {
-        $categories = BlogCategory::orderBy('blog_category','ASC')->get();
+        $categories = BlogCategory::orderBy('title','ASC')->get();
         return view('admin.blogs.blogs_add',compact('blog','categories'));
     }
 

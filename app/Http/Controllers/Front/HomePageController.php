@@ -24,9 +24,9 @@ class HomePageController extends Controller
         $aboutPageData = About::first();
         $allMultiImage = MultiImage::all();
         $blogs = Blog::latest()->limit(3)->get();
-        $homeSlider = HomeSlider::find(1);
+        $homeSlider = HomeSlider::first();
         $portfolio = Portfolio::latest()->get();
-        $footerData = Footer::find(1);
+        $footerData = Footer::first();
 
         return view('frontend.index',compact('aboutPageData','allMultiImage','blogs','homeSlider','portfolio','footerData'));
     }
